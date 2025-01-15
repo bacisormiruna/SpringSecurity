@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}">Update Tag</title>
+</head>
+<body>
+<h1>Update Tag</h1>
+<form th:action="@{/tags/update}" th:object="${tags}" method="post">
+    <div>
+        <label for="name">Tag Name:</label>
+        <input type="text" id="name" th:field="*{name}" />
+    </div>
+    <button type="submit">Update</button>
+</form>
+</body>
+</html>

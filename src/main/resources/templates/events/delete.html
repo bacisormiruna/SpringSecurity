@@ -6,7 +6,7 @@
 
 <h1>Manage Events</h1>
 
-<form method="post">
+<form th:action="@{/events/delete}" method="post">
     <th:block th:each="event : ${events}">
         <div class="form-group">
             <label>

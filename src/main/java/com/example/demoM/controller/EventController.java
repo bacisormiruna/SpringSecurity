@@ -1,16 +1,20 @@
 package com.example.demoM.controller;
 
+import com.example.demoM.dto.EventTagDto;
 import com.example.demoM.model.Event;
 import com.example.demoM.model.EventCategory;
-import com.example.demoM.repository.EventCategoryRepository;
+import com.example.demoM.model.Tag;
 import com.example.demoM.service.category.EventCategoryService;
 import com.example.demoM.service.event.EventService;
+import com.example.demoM.service.tag.TagService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @Controller
 @RequestMapping("events/")
@@ -19,7 +23,7 @@ public class EventController {
 
     private final EventService eventService;
     private final EventCategoryService eventCategoryService;
-    private final EventCategoryRepository eventCategoryRepository;
+    private final TagService tagService;
     @GetMapping
     public String displayAllEvents(@RequestParam(required=false) Integer categoryId, Model model){
 
@@ -58,7 +62,7 @@ public class EventController {
         }
 
         eventService.createEvent(newEvent);
-        return "redirect:"; // redirect response to the root path of the controller
+        return "redirect:";
     }
 
     @GetMapping("delete")
@@ -92,6 +96,38 @@ public class EventController {
         }
 
         return "events/detail";
+    }
+
+    @GetMapping("add-tag")
+    public String displayAddTagForm(@RequestParam Integer eventId, Model model){
+        Optional<Event> result = Optional.ofNullable(eventService.getEventById(eventId));
+        Event event= result.get();
+        model.addAttribute("title", "Add Tag to: " + event.getName());
+        model.addAttribute("tags", tagService.getAllTags());
+        EventTagDto eventTag = new EventTagDto();
+        eventTag.setEvent(event);
+        model.addAttribute("eventTag",eventTag);
+        return "events/add-tag.html";
+    }
+
+    @PostMapping("add-tag")
+    public String processAddTagForm(@ModelAttribute @Valid EventTagDto eventTag, Errors errors, Model model) {
+        if (!errors.hasErrors()) {
+            Optional<Event> eventResult = Optional.ofNullable(eventService.getEventById(eventTag.getEvent().getId()));
+            Optional<Tag> tagResult = Optional.ofNullable(tagService.getTagById(eventTag.getTag().getId()));
+
+            if (eventResult.isPresent() && tagResult.isPresent()) {
+                Event event = eventResult.get();
+                Tag tag = tagResult.get();
+                if (!event.getTags().contains(tag)) {
+                    event.addTag(tag);
+                    eventService.addEvent(event);
+                }
+            }
+
+            return "redirect:detail?eventId=" + eventTag.getEvent().getId();
+        }
+        return "redirect:";
     }
 
 }
