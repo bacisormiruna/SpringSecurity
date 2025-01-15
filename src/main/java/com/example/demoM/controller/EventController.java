@@ -25,10 +25,10 @@ public class EventController {
     // Endpoint pentru vizualizarea tuturor evenimentelor
     @GetMapping("/events")
     public String getAllEvents(Model model, Authentication authentication) {
-        List<Event> userDtos = eventService.getAllEvents();
-        model.addAttribute("title", "Users");
-        model.addAttribute("users", userDtos);
-        return "users";
+        List<Event> eventsDtos = eventService.getAllEvents();
+        model.addAttribute("title", "Events");
+        model.addAttribute("events", eventsDtos);
+        return "eventsE";
     }
 
     // Endpoint pentru adăugarea unui eveniment

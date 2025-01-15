@@ -2,14 +2,10 @@ package com.example.demoM.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
-import org.hibernate.annotations.NaturalId;
-
-import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
@@ -43,17 +39,6 @@ public class Event {
             joinColumns = @JoinColumn(name = "EVENT_ID", referencedColumnName = "ID"),
             inverseJoinColumns = @JoinColumn(name = "TAG_ID", referencedColumnName = "ID"))
     private List<Tag> tags = new ArrayList<>();*/
-
-    @Builder.Default
-    private Boolean isPublic = true;
-
-    private LocalDate startDate;
-
-    private LocalDate endDate;
-
-    @NaturalId(mutable = true) // Adresa email unică, dar modificabilă
-    @Email(message = "Email must be valid")
-    private String organizerEmail;
 
     // Metode suplimentare (dacă sunt necesare)
    /* public void addTag(Tag tag) {
