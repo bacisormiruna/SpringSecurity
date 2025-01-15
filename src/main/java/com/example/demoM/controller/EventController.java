@@ -56,7 +56,7 @@ public class EventController {
         }
 
         eventService.createEvent(newEvent);
-        return "redirect:"; // redirect response to the root path of the controller
+        return "redirect:/events"; // redirect response to the root path of the controller
     }
 
     @GetMapping("delete")
@@ -74,7 +74,7 @@ public class EventController {
                 eventService.deleteEventById(id);
             }
         }
-        return "redirect:";
+        return "redirect:/events";
     }
 
     @GetMapping("detail")
