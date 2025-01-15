@@ -1,17 +1,13 @@
 package com.example.demoM.mapper;
 
-import com.example.demoM.dto.EventDto;
-import com.example.demoM.model.Event;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @RequiredArgsConstructor
 @Component
 public class EventMapper {
-    public EventDto eventEntityToDto(Event event) {
-        return new EventDto(
+    /*public Event eventEntityToDto(Event event) {
+        return new Event(
                 event.getName(),
                 event.getEventCategory(),
                 event.getEventDetails()
@@ -22,5 +18,5 @@ public class EventMapper {
         return events.stream()
                 .map(this::eventEntityToDto)
                 .toList();
-    }
+    }*/
 }
