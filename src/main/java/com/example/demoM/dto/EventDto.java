@@ -6,5 +6,5 @@ import lombok.Builder;
 public record EventDto(
         String name,
         String eventCategory,
-        String  eventDetails
+        String eventDetails
 ) {}

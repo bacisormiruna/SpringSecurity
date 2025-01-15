@@ -30,7 +30,6 @@ public class EventServiceImpl implements EventService {
                 .eventCategory(eventRequest.getEventCategory())  // presupun că ai un câmp pentru categorie
                 .eventDetails(eventRequest.getEventDetails())    // presupun că ai un câmp pentru detalii
                 .build();
-
         return this.addEvent(event); // folosim metoda addEvent pentru a salva evenimentul
     }
 
