@@ -7,7 +7,7 @@
 
 <h1>Create Tag</h1>
 
-<form method="post" th:action="@{/tags/create}">
+<form th:action="@{/tags/create}" method="post" >
     <div class="form-group">
         <label>Tag Name
             <input type="text" th:field="${tag.name}" class="form-control">

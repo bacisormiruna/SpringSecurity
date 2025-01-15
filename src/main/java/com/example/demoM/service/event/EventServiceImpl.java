@@ -38,7 +38,7 @@ public class EventServiceImpl implements EventService {
         }
     }
     @Override
-    public Event createEvent(Event event) {
-        return addEvent(event);  // Folosim addEvent pentru a salva un nou eveniment
+    public void createEvent(Event event) {
+        addEvent(event);
     }
 }
