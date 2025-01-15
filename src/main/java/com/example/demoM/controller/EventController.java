@@ -2,14 +2,18 @@ package com.example.demoM.controller;
 
 import com.example.demoM.dto.EventDto;
 import com.example.demoM.mapper.EventMapper;
-import com.example.demoM.model.EventRequest;
+import com.example.demoM.model.Event;
 import com.example.demoM.service.event.EventService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -35,19 +39,23 @@ public class EventController {
     }
 
 
-    @GetMapping("/createEvent")
-    public String createEventForm(@RequestParam(value="eventSuccess", required=false) String success, Model model) {
-        model.addAttribute("title", "Create Event");
-        model.addAttribute("eventSuccess", success); // Obiect gol pentru formular
-        model.addAttribute("event", new EventRequest());
-        return "createEvent"; // Template-ul pentru formularul de creare
+    @GetMapping("create")
+    public String renderCreateEventForm(Model model){
+        model.addAttribute("title","Create Event");
+        model.addAttribute(new Event());
+        model.addAttribute("category",eventService.getAllEvents());
+        return "events/create";
     }
 
-    @PostMapping("/createEvent")
-    public String createEvent(@ModelAttribute("event") EventRequest eventRequest, RedirectAttributes redirectAttributes) {
-        EventDto eventDto= eventService.registerEvent(eventRequest);
-        redirectAttributes.addAttribute("eventSuccess", "Success");
-            return "redirect:/eventsE"; // Redirecționare la lista evenimentelor după succes
+    @PostMapping("create")
+    public String createEvent(@ModelAttribute @Valid Event newEvent, Errors errors, Model model){
+        if(errors.hasErrors()){
+            model.addAttribute("title", "Create Event");
+            return "events/create";
+        }
+
+        eventService.addEvent(newEvent);
+        return "redirect:/events";
     }
 }
 
