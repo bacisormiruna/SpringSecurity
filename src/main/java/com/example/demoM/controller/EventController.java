@@ -28,7 +28,7 @@ public class EventController {
         List<Event> eventsDtos = eventService.getAllEvents();
         model.addAttribute("title", "Events");
         model.addAttribute("events", eventsDtos);
-        return "events/index";
+        return "eventsE";
     }
 
     // Endpoint pentru adăugarea unui eveniment
