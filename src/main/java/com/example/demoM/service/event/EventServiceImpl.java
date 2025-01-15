@@ -23,7 +23,6 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public Event addEvent(Event event) {
-        // Salvează evenimentul și returnează-l
         return eventRepository.save(event);
     }
 
