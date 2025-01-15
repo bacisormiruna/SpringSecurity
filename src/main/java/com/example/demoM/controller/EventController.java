@@ -36,7 +36,7 @@ public class EventController {
     public String showAddEventForm(Model model) {
         model.addAttribute("title", "Add Event");
         model.addAttribute("event", new Event());
-        return "addEvent";  // Pagina de adăugare eveniment
+        return "create";  // Pagina de adăugare eveniment
     }
 
     @PostMapping("/events/add")
