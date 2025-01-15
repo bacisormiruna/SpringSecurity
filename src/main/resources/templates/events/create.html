@@ -5,7 +5,7 @@
 <h1>Create Event</h1>
 <header th:replace="fragments :: header"></header>
 
-<form method="post" th:action="@{/events/create}">
+<form th:action="@{/events/create}" method="post">
     <div class="form-group">
         <label>Name
             <input th:field="${event.name}" class="form-control">
@@ -27,7 +27,7 @@
     <div class="form-group">
         <label>Type
             <select th:field="${event.eventCategory}">
-                <option th:each="eventCategory : ${category}"
+                <option th:each="eventCategory : ${categories}"
                         th:value="${eventCategory.id}"
                         th:text="${eventCategory.name}">
                 </option>

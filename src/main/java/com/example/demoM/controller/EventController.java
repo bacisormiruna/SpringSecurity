@@ -2,6 +2,7 @@ package com.example.demoM.controller;
 
 import com.example.demoM.model.Event;
 import com.example.demoM.model.EventCategory;
+import com.example.demoM.repository.EventCategoryRepository;
 import com.example.demoM.service.category.EventCategoryService;
 import com.example.demoM.service.event.EventService;
 import jakarta.validation.Valid;
@@ -18,6 +19,7 @@ public class EventController {
 
     private final EventService eventService;
     private final EventCategoryService eventCategoryService;
+    private final EventCategoryRepository eventCategoryRepository;
     @GetMapping
     public String displayAllEvents(@RequestParam(required=false) Integer categoryId, Model model){
 
@@ -56,7 +58,7 @@ public class EventController {
         }
 
         eventService.createEvent(newEvent);
-        return "redirect:/events"; // redirect response to the root path of the controller
+        return "redirect:"; // redirect response to the root path of the controller
     }
 
     @GetMapping("delete")
@@ -74,7 +76,7 @@ public class EventController {
                 eventService.deleteEventById(id);
             }
         }
-        return "redirect:/events";
+        return "redirect:";
     }
 
     @GetMapping("detail")
