@@ -7,8 +7,6 @@ import java.util.List;
 
 public interface EventCategoryService {
     List<EventCategory> getAllEventCategories();
-
-    // Găsește o categorie de eveniment după ID
     EventCategory getEventById(Integer id);
 }
 
