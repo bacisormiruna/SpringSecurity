@@ -13,13 +13,13 @@
 <div class="container">
     <h1 th:text="${title}">Create Event</h1>
 
-    <!-- Mesaj de eroare, dacă există -->
-    <div th:if="${error}" class="error-message">
-        <p th:text="${error}"></p>
+    <!-- Mesaj de succes, dacă există -->
+    <div th:if="${eventSuccess}" class="success-message">
+        <p th:text="'Event created successfully!'"></p>
     </div>
 
     <!-- Formularul pentru creare eveniment -->
-    <form th:action="@{/createEvent}" th:object="${eventRequest}" method="post">
+    <form th:action="@{/createEvent}" th:object="${event}" method="post">
         <!-- Numele evenimentului -->
         <div class="form-group">
             <label for="name">Event Name:</label>
