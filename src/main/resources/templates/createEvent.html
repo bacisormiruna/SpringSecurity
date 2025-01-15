@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <link th:href="@{/css/styles.css}" rel="stylesheet" />
+    <title th:text="${title}">Title</title>
+</head>
+
+<body>
+<h1>Create a New Event</h1>
+
+<form th:action="@{/eventsE}" th:object="${eventDto}" method="post">
+    <label for="name">Event Name:</label>
+    <input type="text" id="name" th:field="*{name}" required="required" />
+
+    <label for="eventCategory">Event Category:</label>
+    <input type="text" id="eventCategory" th:field="*{eventCategory}" required="required" />
+
+    <label for="eventDetails">Event Details:</label>
+    <textarea id="eventDetails" th:field="*{eventDetails}" required="required"></textarea>
+
+    <button type="submit">Create Event</button>
+</form>
+</body>
+</html>
