@@ -3,21 +3,28 @@ package com.example.demoM.model;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-@Data // Generează getter, setter, toString, hashCode și equals
+import java.util.Objects;
 @MappedSuperclass
 public abstract class AbstractEntity {
-
     @Id
     @GeneratedValue
     private int id;
-
-    // Equals și hashCode sunt generate de Lombok
-    // @EqualsAndHashCode.Include asigură includerea câmpului `id` în calculul hashCode și equals
-    @EqualsAndHashCode.Include
     public int getId() {
         return id;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AbstractEntity entity = (AbstractEntity) o;
+        return id == entity.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
