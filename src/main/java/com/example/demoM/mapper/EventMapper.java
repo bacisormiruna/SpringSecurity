@@ -2,8 +2,6 @@ package com.example.demoM.mapper;
 
 import com.example.demoM.dto.EventDto;
 import com.example.demoM.model.Event;
-import com.example.demoM.model.EventCategory;
-import com.example.demoM.model.EventDetails;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -14,17 +12,13 @@ import java.util.stream.Collectors;
 @Component
 public class EventMapper {
 
-    private final EventCategoryMapper eventCategoryMapper;
-    //private final TagMapper tagMapper;
-    private final EventDetailsMapper eventDetailsMapper;
 
     // Maparea din Event în EventDto
     public EventDto eventEntityToDto(Event event) {
         return EventDto.builder()
                 .name(event.getName())
-                .eventCategory(eventCategoryMapper.eventCategoryEntityToDto(event.getEventCategory())) // Mapăm EventCategory
-                .eventDetails(eventDetailsMapper.eventDetailsEntityToDto(event.getEventDetails())) // Mapăm EventDetails
-                //.tags(tagMapper.tagListEntityToDto(event.getTags())) // Mapăm lista de Tag-uri
+                .eventCategory(event.getEventCategory()) // Mapăm numele categoriei din entitatea Category
+                .eventDetails(event.getEventDetails()) // Mapăm EventDetails
                 .build();
     }
 
@@ -37,15 +31,11 @@ public class EventMapper {
 
     // Maparea din EventDto în Event
     public Event eventDtoToEntity(EventDto eventDto) {
-        EventCategory eventCategory = eventCategoryMapper.eventCategoryDtoToEntity(eventDto.eventCategory()); // Mapăm EventCategory
-        EventDetails eventDetails = eventDetailsMapper.eventDetailsDtoToEntity(eventDto.eventDetails()); // Mapăm EventDetails
-       // List<Tag> tags = tagMapper.tagListDtoToEntity(eventDto.tags()); // Mapăm lista de Tag-uri
 
         return Event.builder()
                 .name(eventDto.name())
-                .eventCategory(eventCategory)
-                .eventDetails(eventDetails)
-                //.tags(tags)
+                .eventCategory(eventDto.eventCategory())
+                .eventDetails(eventDto.eventDetails())
                 .build();
     }
 

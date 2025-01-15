@@ -5,7 +5,6 @@ import lombok.Builder;
 @Builder
 public record EventDto(
         String name,
-        EventCategoryDto eventCategory,
-        EventDetailsDto eventDetails
-        //List<TagDto> tags
+        String eventCategory,
+        String  eventDetails
 ) {}

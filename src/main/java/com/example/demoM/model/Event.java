@@ -24,14 +24,12 @@ public class Event {
     @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters.")
     private String name;
 
-    @OneToOne(cascade = CascadeType.ALL)
     @Valid
     @NotNull
-    private EventDetails eventDetails;
+    private String eventDetails;
 
-    @ManyToOne
     @NotNull(message = "Category is required")
-    private EventCategory eventCategory;
+    private String eventCategory;
 
     /*@Singular
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -51,7 +49,7 @@ public class Event {
 
     @Override
     public String toString() {
-        return name + " (" + eventCategory.getName() + ")";
+        return name + " (" + eventCategory+ ")";
     }
 }
 

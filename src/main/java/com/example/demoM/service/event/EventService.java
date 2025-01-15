@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface EventService {
     // Metodă pentru a obține toate evenimentele
-    List<Event> getAllEvents();
+    List<EventDto> getAllEvents();
 
     // Metodă pentru a adăuga un eveniment nou
     Event addEvent(Event event);
