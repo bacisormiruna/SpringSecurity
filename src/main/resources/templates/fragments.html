@@ -49,6 +49,17 @@
         </tr>
     </table>
 </div>
+
+<div th:fragment="event_table">
+    <table>
+        <tr>
+            <th>Event Name</th>
+        </tr>
+        <tr th:each="event : ${event}">
+            <td th:text="${event.name}"></td>
+        </tr>
+    </table>
+</div>
 <div th:fragment="footer">
     <div class="footer"><p class="footer">Inginerie Software 2024</p></div>
 </div>
