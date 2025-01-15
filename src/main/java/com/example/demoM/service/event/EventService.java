@@ -1,9 +1,9 @@
 package com.example.demoM.service.event;
 
+import com.example.demoM.dto.EventDto;
 import com.example.demoM.model.Event;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface EventService {
     // Metodă pentru a obține toate evenimentele
@@ -16,5 +16,5 @@ public interface EventService {
     void deleteEvent(Integer id);
 
     // Metodă pentru a găsi un eveniment după ID
-    Optional<Event> getEventById(Integer id);
+     EventDto getEventById(Integer id);
 }

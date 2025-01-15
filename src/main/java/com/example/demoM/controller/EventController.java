@@ -1,5 +1,6 @@
 package com.example.demoM.controller;
 
+import com.example.demoM.dto.EventDto;
 import com.example.demoM.mapper.EventMapper;
 import com.example.demoM.model.Event;
 import com.example.demoM.service.event.EventService;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -30,7 +30,7 @@ public class EventController {
     }
 
     @GetMapping("/eventsE/{id}")
-    public Optional<Event> getEventById(@PathVariable Integer id){
+    public EventDto getEventById(@PathVariable Integer id){
         return eventService.getEventById(id);
     }
 }
