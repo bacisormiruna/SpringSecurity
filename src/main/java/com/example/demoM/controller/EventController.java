@@ -20,13 +20,13 @@ public class EventController {
     private final EventService eventService;
     private final EventMapper eventMapper;  // Injectăm mapper-ul pentru conversia obiectelor
 
-    // Endpoint pentru vizualizarea tuturor evenimentelor
+
     @GetMapping("/eventsE")
     public String getAllEvents(Model model, Authentication authentication) {
-        List<Event> eventsDtos = eventService.getAllEvents();
+        List<Event> events = eventService.getAllEvents();
         model.addAttribute("title", "Events");
-        model.addAttribute("events", eventsDtos);
-        return "eventsE";
+        model.addAttribute("events", eventMapper.eventListEntityToDto(events)); // Aici se adaugă lista corect mapată
+        return "eventsE"; // Asigură-te că fișierul este numit corect
     }
 
     @GetMapping("/eventsE/{id}")
