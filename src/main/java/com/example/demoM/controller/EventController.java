@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -44,9 +45,14 @@ public class EventController {
     }
 
     @PostMapping("/createEvent")
-    public String createEvent(@ModelAttribute EventDto eventDto) {
+    public String createEvent(@ModelAttribute EventDto eventDto, RedirectAttributes redirectAttributes) {
         Event event = eventMapper.eventDtoToEntity(eventDto);
         eventService.addEvent(event);
+
+        // Adăugăm un flash attribute cu mesajul de succes
+        redirectAttributes.addFlashAttribute("message", "Eveniment creat cu succes!");
+
+        // Redirecționăm către pagina cu evenimente
         return "redirect:/eventsE";
     }
 }
