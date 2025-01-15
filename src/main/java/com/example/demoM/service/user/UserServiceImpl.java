@@ -1,4 +1,4 @@
-package com.example.demoM.service;
+package com.example.demoM.service.user;
 
 import com.example.demoM.dto.UserDto;
 import com.example.demoM.mapper.RoleMapper;
@@ -15,7 +15,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
     private final UserMapper userMapper;

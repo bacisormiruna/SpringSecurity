@@ -1,4 +1,4 @@
-package com.example.demoM.service;
+package com.example.demoM.service.role;
 
 import com.example.demoM.dto.RoleDto;
 import com.example.demoM.mapper.RoleMapper;

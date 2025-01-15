@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<header th:replace="fragments :: header"></header>
+
+<h1>Tags</h1>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Tag Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="tag : ${tags}">
+        <td>
+            <a th:text="${tag.name}" th:href="@{/tags/{id}/events(id=${tag.id})}"></a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

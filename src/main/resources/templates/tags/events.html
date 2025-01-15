@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<header th:replace="fragments :: header"></header>
+
+<h1 th:text="${title}"></h1>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Event Name</th>
+        <th>Event Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="event : ${events}">
+        <td th:text="${event.name}"></td>
+        <td th:text="${event.eventDetails.description}"></td>
+    </tr>
+    <tr th:if="${events == null || events.size() == 0}">
+        <td colspan="2">No events with this tag.</td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="/tags">Back to Tags</a>
+
+</body>
+</html>

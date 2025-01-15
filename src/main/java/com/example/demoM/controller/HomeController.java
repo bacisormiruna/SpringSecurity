@@ -2,7 +2,7 @@ package com.example.demoM.controller;
 
 import com.example.demoM.dto.UserDto;
 import com.example.demoM.model.RegistrationRequest;
-import com.example.demoM.service.UserService;
+import com.example.demoM.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;

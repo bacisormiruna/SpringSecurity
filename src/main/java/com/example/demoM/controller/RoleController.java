@@ -1,7 +1,7 @@
 package com.example.demoM.controller;
 
 import com.example.demoM.dto.RoleDto;
-import com.example.demoM.service.RoleService;
+import com.example.demoM.service.role.RoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
