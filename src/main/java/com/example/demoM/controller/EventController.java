@@ -48,7 +48,7 @@ public class EventController {
     public String createEvent(@ModelAttribute("eventRequest") EventRequest eventRequest, Model model) {
         try {
             eventService.registerEvent(eventRequest);
-            return "redirect:/events"; // Redirecționare la lista evenimentelor după succes
+            return "redirect:/eventsE"; // Redirecționare la lista evenimentelor după succes
         } catch (Exception e) {
             model.addAttribute("error", "An error occurred while creating the event.");
             model.addAttribute("eventRequest", eventRequest);

@@ -10,19 +10,44 @@
 </head>
 
 <body>
-<h1>Create a New Event</h1>
+<div class="container">
+    <h1 th:text="${title}">Create Event</h1>
 
-<form th:action="@{/createEvent}" th:object="${eventDto}" method="post">
-    <label for="name">Event Name:</label>
-    <input type="text" id="name" th:field="*{name}" required="required" />
+    <!-- Mesaj de eroare, dacă există -->
+    <div th:if="${error}" class="error-message">
+        <p th:text="${error}"></p>
+    </div>
 
-    <label for="eventCategory">Event Category:</label>
-    <input type="text" id="eventCategory" th:field="*{eventCategory}" required="required" />
+    <!-- Formularul pentru creare eveniment -->
+    <form th:action="@{/createEvent}" th:object="${eventRequest}" method="post">
+        <!-- Numele evenimentului -->
+        <div class="form-group">
+            <label for="name">Event Name:</label>
+            <input type="text" id="name" name="name" th:field="*{name}" placeholder="Enter event name" required>
+        </div>
 
-    <label for="eventDetails">Event Details:</label>
-    <textarea id="eventDetails" th:field="*{eventDetails}" required="required"></textarea>
+        <!-- Categoria evenimentului -->
+        <div class="form-group">
+            <label for="eventCategory">Event Category:</label>
+            <input type="text" id="eventCategory" name="eventCategory" th:field="*{eventCategory}" placeholder="Enter event category" required>
+        </div>
 
-    <button type="submit">Create Event</button>
-</form>
+        <!-- Detalii despre eveniment -->
+        <div class="form-group">
+            <label for="eventDetails">Event Details:</label>
+            <textarea id="eventDetails" name="eventDetails" th:field="*{eventDetails}" placeholder="Enter event details" rows="5" required></textarea>
+        </div>
+
+        <!-- Buton pentru trimitere -->
+        <div class="form-group">
+            <button type="submit">Create Event</button>
+        </div>
+    </form>
+
+    <!-- Buton pentru întoarcerea la lista de evenimente -->
+    <div>
+        <a href="/eventsE">Back to Events</a>
+    </div>
+</div>
 </body>
 </html>
