@@ -38,7 +38,7 @@ public class EventController {
         return "events/index";
     }
 
-    @GetMapping("events/create")
+    @GetMapping("create")
     public String displayCreateEventForm(Model model){
         model.addAttribute("title", "Create Event");
         model.addAttribute(new Event()); // this empty event will have inf about the event so it will be helpful for the create template ( asa am putut inlocui name si type attributes cu th:field...)
@@ -46,7 +46,7 @@ public class EventController {
         return "events/create";
     }
 
-    @PostMapping("events/create")
+    @PostMapping("create")
     public String processCreateEventForm(@ModelAttribute @Valid Event newEvent, Errors errors, Model model){ // in errors vor fi scrise toate mesajele de eroare de la validare
 
         if(errors.hasErrors()){
@@ -59,14 +59,14 @@ public class EventController {
         return "redirect:"; // redirect response to the root path of the controller
     }
 
-    @GetMapping("events/delete")
+    @GetMapping("delete")
     public String displayDeleteEventForm(Model model){
         model.addAttribute("title", "Delete Events");
         model.addAttribute("events", eventService.getAllEvents());
         return "events/delete";
     }
 
-    @PostMapping("events/delete")
+    @PostMapping("delete")
     public String processDeleteEventsForm(@RequestParam(required = false) int[] eventIds){ // pentru a nu primi eroare cand nu avem selectat niciun eveniment
 
         if (eventIds != null) {
@@ -74,11 +74,10 @@ public class EventController {
                 eventService.deleteEventById(id);
             }
         }
-
         return "redirect:";
     }
 
-    @GetMapping("events/detail")
+    @GetMapping("detail")
     public String displayEventDetails(@RequestParam Integer eventId, Model model){
         Event event = eventService.getEventById(eventId);
 
