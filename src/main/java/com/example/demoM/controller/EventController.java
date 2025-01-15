@@ -40,10 +40,10 @@ public class EventController {
     @GetMapping("/createEvent")
     public String showCreateEventForm(Model model) {
         model.addAttribute("eventDto", new EventDto("","",""));
-        return "createEvent";  // Numele fișierului HTML (fără extensie)
+        return "createEvent";
     }
 
-    @PostMapping("/eventsE")
+    @PostMapping("/createEvent")
     public String createEvent(@ModelAttribute EventDto eventDto) {
         Event event = eventMapper.eventDtoToEntity(eventDto);
         eventService.addEvent(event);

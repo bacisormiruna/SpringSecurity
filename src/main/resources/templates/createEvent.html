@@ -12,7 +12,7 @@
 <body>
 <h1>Create a New Event</h1>
 
-<form th:action="@{/eventsE}" th:object="${eventDto}" method="post">
+<form th:action="@{/createEvent}" th:object="${eventDto}" method="post">
     <label for="name">Event Name:</label>
     <input type="text" id="name" th:field="*{name}" required="required" />
 
