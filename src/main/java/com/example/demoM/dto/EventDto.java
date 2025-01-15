@@ -1,10 +1,12 @@
 package com.example.demoM.dto;
 
+import com.example.demoM.model.EventCategory;
+import com.example.demoM.model.EventDetails;
 import lombok.Builder;
 
 @Builder
 public record EventDto(
         String name,
-        String eventCategory,
-        String eventDetails
+        EventCategory eventCategory,
+        EventDetails eventDetails
 ) {}
