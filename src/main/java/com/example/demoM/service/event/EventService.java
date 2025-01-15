@@ -2,19 +2,20 @@ package com.example.demoM.service.event;
 
 import com.example.demoM.dto.EventDto;
 import com.example.demoM.model.Event;
+import com.example.demoM.model.EventRequest;
 
 import java.util.List;
 
 public interface EventService {
-    // Metodă pentru a obține toate evenimentele
     List<EventDto> getAllEvents();
 
-    // Metodă pentru a adăuga un eveniment nou
-    Event addEvent(Event event);
+    EventDto registerEvent(EventRequest registrationRequest);
 
-    // Metodă pentru a șterge un eveniment după ID
+    EventDto addEvent(Event event);
+
+    EventDto getEventById(Integer id);
+
+    EventDto updateEvent(Integer id, EventDto eventDto);
+
     void deleteEvent(Integer id);
-
-    // Metodă pentru a găsi un eveniment după ID
-     EventDto getEventById(Integer id);
 }
