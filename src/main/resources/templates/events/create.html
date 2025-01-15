@@ -7,37 +7,37 @@
 
 <form method="post">
     <div class="form-group">
-        <label>Name
-            <input th:field="${event.name}" class="form-control">
-        </label>
-        <p style="color: red; font-weight: bold;" th:errors="${event.name}"></p>
+        <label for="name">Name</label>
+        <input id="name" th:field="*{name}" class="form-control" required>
+        <p style="color: red; font-weight: bold;" th:errors="*{name}"></p>
     </div>
+
     <div class="form-group">
-        <label>Description
-            <input th:field="${event.eventDetails.description}" class="form-control">
-        </label>
-        <p style="color: red; font-weight: bold;"th:errors="${event.eventDetails.description}"></p>
+        <label for="description">Description</label>
+        <input id="description" th:field="*{eventDetails.description}" class="form-control" required>
+        <p style="color: red; font-weight: bold;" th:errors="*{eventDetails.description}"></p>
     </div>
+
     <div class="form-group">
-        <label>Contact Email
-            <input th:field="${event.eventDetails.contactEmail}" class="form-control">
-        </label>
-        <p style="color: red; font-weight: bold;"th:errors="${event.eventDetails.contactEmail}"></p>
+        <label for="contactEmail">Contact Email</label>
+        <input id="contactEmail" th:field="*{eventDetails.contactEmail}" class="form-control" required>
+        <p style="color: red; font-weight: bold;" th:errors="*{eventDetails.contactEmail}"></p>
     </div>
+
     <div class="form-group">
-        <label>Type
-            <select th:field="${event.eventCategory}">
-                <option th:each="eventCategory : ${category}"
-                        th:value="${eventCategory.id}"
-                        th:text="${eventCategory.name}">
-                </option>
-            </select>
-        </label>
+        <label for="category">Type</label>
+        <select id="category" th:field="*{eventCategory}" class="form-control">
+            <option th:each="eventCategory : ${category}"
+                    th:value="${eventCategory.id}"
+                    th:text="${eventCategory.name}">
+            </option>
+        </select>
     </div>
+
     <div class="form-group">
         <input type="submit" value="Create" class="btn btn-success">
     </div>
-
 </form>
+
 </body>
 </html>
