@@ -23,7 +23,6 @@ public class UserController {
         model.addAttribute("users", userDtos);
         return "users";
     }
-
     @GetMapping("/users/{id}")
     public UserDto getUserById(@PathVariable Integer id){
         return userService.getUserById(id);

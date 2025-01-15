@@ -55,8 +55,8 @@
         <tr>
             <th>Event Name</th>
         </tr>
-        <tr th:each="event : ${events}">
-            <td th:text="${event.name}"></td>
+        <tr th:each="events : ${event}">
+            <td th:text="${events.name}"></td>
         </tr>
     </table>
 </div>

@@ -11,6 +11,5 @@ public interface EventRepository extends JpaRepository<Event, Integer> {
     @EntityGraph(type = EntityGraph.EntityGraphType.FETCH,
             attributePaths = {"eventsE"})
     List<Event> findAll();
-
 }
 

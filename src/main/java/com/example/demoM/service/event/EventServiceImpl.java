@@ -17,8 +17,8 @@ public class EventServiceImpl implements EventService {
     private final EventMapper eventMapper;
 
     @Override
-    public List<Event> getAllEvents() {
-        return eventRepository.findAll();
+    public List<EventDto> getAllEvents() {
+        return eventMapper.eventListEntityToDto(eventRepository.findAll());
     }
 
     @Override
