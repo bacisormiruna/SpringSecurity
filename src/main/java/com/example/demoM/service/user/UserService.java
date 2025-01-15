@@ -1,4 +1,4 @@
-package com.example.demoM.service;
+package com.example.demoM.service.user;
 
 import com.example.demoM.dto.UserDto;
 import com.example.demoM.model.RegistrationRequest;
