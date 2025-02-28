@@ -4,7 +4,7 @@
 <body class="container">
 <h1>Create Event</h1>
 <header th:replace="fragments :: header"></header>
-<form th:action="@{/tags/events}" method="post">
+<form method="post">
     <div class="form-group">
         <input type="hidden" th:field="${eventTag.event}">
         <select th:field="${eventTag.tag}">
