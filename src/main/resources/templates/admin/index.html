@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Adaugă un fișier CSS, dacă este cazul -->
+</head>
+<body>
+<h1 th:text="${title}">Admin Panel</h1>
+
+<h2>Users List</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Roles</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.firstName}"></td>
+        <td th:text="${user.lastName}"></td>
+        <td th:text="${user.emailAddress}"></td>
+        <td th:text="${user.roles}"></td>
+        <td>
+            <a th:href="@{/users/{id}(id=${user.id})}">View</a> |
+            <a th:href="@{/admin/updateUser(id=${user.id})}">Edit</a> |
+            <a th:href="@{/admin/deleteUser(id=${user.id})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="/admin/createUserAdmin">Add New User</a>
+</body>
+</html>

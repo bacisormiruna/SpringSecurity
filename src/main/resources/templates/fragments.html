@@ -23,6 +23,8 @@
         <a class="header" href="/tags/create"><span sec:authorize="isAuthenticated() and hasAuthority('ADMIN')">Create Tag</span></a>
         <a class="header" href="/tags/"><span sec:authorize="isAuthenticated() and hasAuthority('ADMIN')">Tags</span></a>
 
+
+        <a class="header" href="/admin/createUserAdmin"><span sec:authorize="isAuthenticated() and hasAuthority('ADMIN')">Create New User</span></a>
         <a class="header" href="/user"><span sec:authorize="isAuthenticated() and hasAuthority('USER')">User</span></a>
         <a class="header" href="/events/"><span sec:authorize="isAuthenticated() and hasAuthority('USER')">Events</span></a>
         <a class="header" href="/events/create"><span sec:authorize="isAuthenticated() and hasAuthority('USER')">Create Events</span></a>
